@@ -27,7 +27,7 @@ The original authors of this database are Sonkoly et. al., their manuscript is a
 
 You can install the development version of padaptR from [GitHub](https://github.com/dominiksutac/padaptR) with:
 
-``` {r, echo = FALSE}
+``` {r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("dominiksutac/padaptR")
 ```
