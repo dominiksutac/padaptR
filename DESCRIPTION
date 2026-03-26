@@ -1,9 +1,9 @@
 Package: padaptR
-Title: What the Package Does (One Line, Title Case)
+Title: Adapter from PADAPT to R
 Version: 0.0.0.9000
 Authors@R: 
     person("Dominik", "Sutac", , "sutacdominik@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: A tool to work with PADAPT data without having to manually download data from the website
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

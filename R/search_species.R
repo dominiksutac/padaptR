@@ -12,7 +12,7 @@
 #'
 #' @export
 search_species = function(name){
-  idx = which(!is.na(stringr::str_extract(data$species, pattern = name)))
+  idx = which(!is.na(stringr::str_extract(padapt$species, pattern = name)))
 
   if (length(idx) == 0){stop('There is no data found!')}
   return(data$species[idx])

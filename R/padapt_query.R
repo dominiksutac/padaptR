@@ -8,14 +8,14 @@
 #' @examples
 #'
 #' #First, we deifne a list of species, and a list of traits
-#' species = c("Stipa capillata L.", "Abies alba Mill." )
-#' traits = c("sla1","sla2","sla3")
+#' species = c("Acorus calamus L.", "Ambrosia artemisiifolia L." )
+#' traits = c("sla1","sla2","sla3","sla4")
 #' padapt_query(species, traits)
 #' @export
 #' @import dplyr
 
 padapt_query = function(list_of_species, list_of_traits){
-  toexport = data %>%
+  toexport = padapt %>%
     select(species, all_of(list_of_traits)) %>%
     filter(species %in% list_of_species)
 

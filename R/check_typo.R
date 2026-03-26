@@ -9,11 +9,11 @@
 #' check_typo(species_list)
 #' @export
 check_typo = function(species){
-  if (all(species %in% data$species)){
+  if (all(species %in% padapt$species)){
     message('All good! Ready for the next step!')
   }
   else {
-    misstyped = which(!species %in% data$species)
+    misstyped = which(!species %in% padapt$species)
     warning(paste("\nYou've made a typo!\nIt appears to be:",
                   paste(species[misstyped], collapse = ', ')))
   }

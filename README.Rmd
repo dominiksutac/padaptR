@@ -1,0 +1,38 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# padaptR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The reason for writing padaptR is to realize a tool which makes it easier to work with data downloaded from PADAPT (Pannonian Database Of Plant Traits). They also have a website: https://padapt.eu/en
+
+The original authors of this database are Sonkoly et. al., their manuscript is avaiable at https://doi.org/10.1038/s41597-023-02619-9
+
+
+## Installation
+
+You can install the development version of padaptR from [GitHub](https://github.com/dominiksutac/padaptR) with:
+
+``` {r}
+# install.packages("devtools")
+devtools::install_github("dominiksutac/padaptR")
+```
+
+```{r example}
+library(padaptR)
+
+```

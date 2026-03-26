@@ -2,7 +2,7 @@
 % Please edit documentation in R/rand_species_traits.R
 \name{rand_traits}
 \alias{rand_traits}
-\title{Get random number of traits from the table}
+\title{Get N number of traits from the table}
 \usage{
 rand_traits(n)
 }
@@ -13,7 +13,7 @@ rand_traits(n)
 A character vector
 }
 \description{
-Get random number of traits from the table
+Get N number of traits from the table
 }
 \examples{
 rand_species(10)

@@ -20,7 +20,7 @@ Queries the database
 \examples{
 
 #First, we deifne a list of species, and a list of traits
-species = c("Stipa capillata L.", "Abies alba Mill." )
-traits = c("sla1","sla2","sla3")
+species = c("Acorus calamus L.", "Ambrosia artemisiifolia L." )
+traits = c("sla1","sla2","sla3","sla4")
 padapt_query(species, traits)
 }
