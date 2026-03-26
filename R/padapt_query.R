@@ -12,6 +12,8 @@
 #' traits = c("sla1","sla2","sla3")
 #' padapt_query(species, traits)
 #' @export
+#' @import dplyr
+
 padapt_query = function(list_of_species, list_of_traits){
   toexport = data %>%
     select(species, all_of(list_of_traits)) %>%
