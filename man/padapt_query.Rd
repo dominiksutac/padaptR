@@ -4,7 +4,7 @@
 \alias{padapt_query}
 \title{Queries the database}
 \usage{
-padapt_query(list_of_species, list_of_traits)
+padapt_query(list_of_species, list_of_traits = NULL, preset = "All")
 }
 \arguments{
 \item{list_of_species}{A list which contains the names of the species}

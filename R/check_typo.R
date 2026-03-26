@@ -11,10 +11,27 @@
 check_typo = function(species){
   if (all(species %in% padapt$species)){
     message('All good! Ready for the next step!')
+    return(TRUE)
   }
   else {
     misstyped = which(!species %in% padapt$species)
     warning(paste("\nYou've made a typo!\nIt appears to be:",
                   paste(species[misstyped], collapse = ', ')))
+    return(FALSE)
+  }
+}
+
+check_typo_trait = function(traits, verbose = TRUE){
+  if (all(traits %in% categorized_traits$traits)){
+    if (verbose == TRUE){
+    message('All good! Ready for the next step!')
+    }
+    return(TRUE)
+  }
+  else {
+    misstyped = which(!traits %in% categorized_traits$traits)
+    warning(paste("\nYou've made a typo!\nIt appears to be:",
+                  paste(traits[misstyped], collapse = ', ')))
+    return(FALSE)
   }
 }
