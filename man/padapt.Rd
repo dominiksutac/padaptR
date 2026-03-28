@@ -8,7 +8,7 @@
 A data frame with 2745 rows and 79 columns.
 
 NOTE: This version also includes a column for the genus, which is not found in the original.
-To read about the variable, I recommend their official website: https://padapt.eu/info.html
+To read about the variables, I recommend their official website: \url{https://padapt.eu/info.html}
 }
 \source{
 \url{https://figshare.com/articles/dataset/PADAPT_1_0_the_Pannonian_Database_of_Plant_Traits/21937157?file=41684067}

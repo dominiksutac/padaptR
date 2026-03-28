@@ -7,17 +7,26 @@
 check_typo(species)
 }
 \arguments{
-\item{species}{The list of names}
+\item{species}{A list of character, the species names}
 }
 \value{
-A message if the names are correct and a warning if there is a mistake. Also returns the wrong names.
+If everything is correct, you'll get a message which means you can go ahead to next step.
+In case of having something wrong, a warning pops up. In the warning there will be highlighted
+all the names which was miss typed, and there will be 3 recommendation for each and every one
+of the names
 }
 \description{
 Check if you've made a typo in your list of species names
 }
 \examples{
-# generate a random list of species first
+# It looks like this, when there are no mistakes
 species_list <- c( "Sternbergia colchiciflora Waldst. et Kit.","Scorzonera humilis L.",
 "Ceratophyllum demersum L.","Lathyrus sylvestris L.","Sedum sexangulare L.")
+check_typo(species_list)
+
+# Now let's take the same species_list as above, but let's introduce some mistakes. I am gonna
+#change the first and last names.
+species_list <- c( "Stenrbegria colchiciflra Waldst. et Kit.","Scorzonera humilis L.",
+"Ceratophyllum demersum L.","Lathyrus sylvestris L.","Sedum sektangulare")
 check_typo(species_list)
 }

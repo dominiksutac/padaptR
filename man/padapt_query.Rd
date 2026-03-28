@@ -2,20 +2,33 @@
 % Please edit documentation in R/padapt_query.R
 \name{padapt_query}
 \alias{padapt_query}
-\title{Queries the database}
+\title{Search the database}
 \usage{
-padapt_query(list_of_species, list_of_traits = NULL, preset = "All")
+padapt_query(
+  list_of_species,
+  list_of_traits = NULL,
+  preset = "All",
+  means = FALSE,
+  just_means = FALSE
+)
 }
 \arguments{
 \item{list_of_species}{A list which contains the names of the species}
 
 \item{list_of_traits}{A list which contains the names of the traits}
+
+\item{means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} the mean will be calculated for
+traits with multiple sources, for example the leaf traits}
+
+\item{just_means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} only the mean trait values
+will be included in the results in case of a trait having multiple sources}
 }
 \value{
 The subset of the database you are interested in.
 }
 \description{
-Queries the database
+Searches the database by the species you are interested in, extracting all the traits you
+might need for your analysis.
 }
 \examples{
 

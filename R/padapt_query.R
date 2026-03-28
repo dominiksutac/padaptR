@@ -1,9 +1,17 @@
-#' Queries the database
+#' Search the database
 #'
 #' @param list_of_species A list which contains the names of the species
 #' @param list_of_traits A list which contains the names of the traits
+#' @param means Boolean operator. `FALSE` by default, if `TRUE` the mean will be calculated for
+#' traits with multiple sources, for example the leaf traits
+#' @param just_means Boolean operator. `FALSE` by default, if `TRUE` only the mean trait values
+#' will be included in the results in case of a trait having multiple sources
 #'
 #' @returns The subset of the database you are interested in.
+#' @description
+#'
+#' Searches the database by the species you are interested in, extracting all the traits you
+#' might need for your analysis.
 #'
 #' @examples
 #'
@@ -14,7 +22,8 @@
 #' @export
 #' @import dplyr
 
-padapt_query = function(list_of_species, list_of_traits = NULL, preset = 'All'){
+padapt_query = function(list_of_species, list_of_traits = NULL,
+                        preset = 'All', means = FALSE, just_means = FALSE){
 
   traits_on_demand = c()
   traits_preset = c()
@@ -45,9 +54,20 @@ padapt_query = function(list_of_species, list_of_traits = NULL, preset = 'All'){
   }
 
   traits = unique(c(traits_preset,traits_on_demand))
+
   toexport <- padapt %>%
     select(species, all_of(traits)) %>%
     filter(species %in% list_of_species)
 
+  if(means){
+    mean_df = get_means(toexport, traits) %>%
+      dplyr::mutate(species = toexport$species, .before = 1)
+
+    if(just_means){
+      toexport = mean_df
+      } else {
+        toexport = dplyr::left_join(toexport, mean_df, by = 'species')
+    }
+  }
   return(toexport)
 }
