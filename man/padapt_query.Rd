@@ -7,7 +7,7 @@
 padapt_query(
   list_of_species,
   list_of_traits = NULL,
-  preset = "All",
+  preset = "all",
   means = FALSE,
   just_means = FALSE
 )
@@ -18,7 +18,9 @@ padapt_query(
 \item{list_of_traits}{A list which contains the names of the traits}
 
 \item{means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} the mean will be calculated for
-traits with multiple sources, for example the leaf traits}
+traits with multiple sources, for example the leaf traits. There is 5 options to choose from:
+\verb{'all','none','hab_str','repr','kary','dist_cons','ecol_ind','leaf_traits'}. The traits has
+been categorized by this table: \url{https://padapt.eu/info.html}}
 
 \item{just_means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} only the mean trait values
 will be included in the results in case of a trait having multiple sources}

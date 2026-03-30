@@ -1,6 +1,7 @@
 #' Check if you've made a typo in your list of species names
 #'
 #' @param species A list of character, the species names
+#' @param to_return TRUE in case you want the function to return the array of recommendation
 #' @return If everything is correct, you'll get a message which means you can go ahead to next step.
 #' In case of having something wrong, a warning pops up. In the warning there will be highlighted
 #' all the names which was miss typed, and there will be 3 recommendation for each and every one
@@ -17,7 +18,7 @@
 #' "Ceratophyllum demersum L.","Lathyrus sylvestris L.","Sedum sektangulare")
 #' check_typo(species_list)
 #' @export
-check_typo = function(species){
+check_typo = function(species, to_return = FALSE){
   # If there is no mistake in the names, it just confirms that everything is all right.
   if (all(species %in% padapt$species)){
     message('All good! Ready for the next step!')
@@ -40,6 +41,9 @@ check_typo = function(species){
     warning(paste("\nYou've made a typo! Here are some suggestions you may wanted!\n",
                   paste(formatted, collapse = "\n")
     ))
+    if(to_return == TRUE){
+    return(formatted)
+    }
   }
 }
 
