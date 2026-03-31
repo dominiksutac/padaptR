@@ -26,9 +26,9 @@ The original authors of this database are Sonkoly et. al., their manuscript is a
 
 So far these are the available functions within this package:  
 `padapt_query()` Searches the database and applies the filters you need  
-`search_species()` Returns all the species names which contains the search string
-`check_typo()` Validate the species names, get recommendations in case of error
-`rand_species() / rand_traits()` Get traits, and species names randomly
+`search_species()` Returns all the species names which contains the search string  
+`check_typo()` Validate the species names, get recommendations in case of error  
+`rand_species() / rand_traits()` Get traits, and species names randomly  
 
 ## Installation
 

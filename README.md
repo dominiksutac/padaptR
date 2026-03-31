@@ -20,9 +20,10 @@ So far these are the available functions within this package:
 `padapt_query()` Searches the database and applies the filters you
 need  
 `search_species()` Returns all the species names which contains the
-search string `check_typo()` Validate the species names, get
-recommendations in case of error `rand_species() / rand_traits()` Get
-traits, and species names randomly
+search string  
+`check_typo()` Validate the species names, get recommendations in case
+of error  
+`rand_species() / rand_traits()` Get traits, and species names randomly
 
 ## Installation
 
@@ -45,9 +46,9 @@ In the following I am gonna demonstrate how all of these works currently
 
 ``` r
 rand_species(2)
-#> [1] "Artemisia alba Turra"        "Chenopodium ambrosioides L."
+#> [1] "Xanthium strumarium L." "Stachys alpina L."
 rand_traits(2)
-#> [1] "SBP7" "SLA3"
+#> [1] "Borhidi_T"   "Ellenberg_F"
 ```
 
 ``` r
