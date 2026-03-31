@@ -4,12 +4,14 @@
 \alias{check_typo}
 \title{Check if you've made a typo in your list of species names}
 \usage{
-check_typo(species, to_return = FALSE)
+check_typo(species, to_return = FALSE, suppress_warning = FALSE)
 }
 \arguments{
 \item{species}{A list of character, the species names}
 
 \item{to_return}{TRUE in case you want the function to return the array of recommendation}
+
+\item{suppress_warning}{Logical, if \code{TRUE} the function will not pop up it's warning message}
 }
 \value{
 If everything is correct, you'll get a message which means you can go ahead to next step.

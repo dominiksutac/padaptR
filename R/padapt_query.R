@@ -66,7 +66,7 @@ padapt_query = function(list_of_species, list_of_traits = NULL,
     filter(species %in% list_of_species)
 
   # If the user also requires means of traits, calculate it
-  if(means){
+  if(means || just_means){
     mean_df = get_means(toexport, traits) %>%
       dplyr::mutate(species = toexport$species, .before = 1)
 

@@ -23,7 +23,10 @@ need
 search string  
 `check_typo()` Validate the species names, get recommendations in case
 of error  
-`rand_species() / rand_traits()` Get traits, and species names randomly
+`rand_species() / rand_traits()` Get traits, and species names
+randomly  
+`convert()` Covert standard scientific names into the ones found in
+PADAPT
 
 ## Installation
 
@@ -46,9 +49,9 @@ In the following I am gonna demonstrate how all of these works currently
 
 ``` r
 rand_species(2)
-#> [1] "Xanthium strumarium L." "Stachys alpina L."
+#> [1] "Phleum bertolonii DC."     "Scutellaria columnae All."
 rand_traits(2)
-#> [1] "Borhidi_T"   "Ellenberg_F"
+#> [1] "TSM3"     "Flow_dur"
 ```
 
 ``` r
@@ -77,6 +80,15 @@ check_typo(sp2)
 #> Warning in check_typo(sp2): 
 #> You've made a typo! Here are some suggestions you may wanted!
 #>  Spita pennata L. → Stipa pennata L., Spiraea crenata L., Staphylea pinnata L.
+```
+
+``` r
+species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis")
+
+convert(species)
+#> [1] "Achillea nobilis L."              "Adonis vernalis L."              
+#> [3] "Agropyron cristatum (L.) Gaertn." "Agrostis stolonifera agg."       
+#> [5] "Agrostis canina L."
 ```
 
 ``` r

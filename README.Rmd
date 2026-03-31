@@ -29,6 +29,7 @@ So far these are the available functions within this package:
 `search_species()` Returns all the species names which contains the search string  
 `check_typo()` Validate the species names, get recommendations in case of error  
 `rand_species() / rand_traits()` Get traits, and species names randomly  
+`convert()` Covert standard scientific names into the ones found in PADAPT
 
 ## Installation
 
@@ -64,6 +65,13 @@ check_typo(sp)
 #Now let's introduce a mistake
 sp2 = 'Spita pennata L.'
 check_typo(sp2)
+```
+
+```{r}
+species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis")
+
+convert(species)
+
 ```
 
 ```{r}
