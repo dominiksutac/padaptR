@@ -36,5 +36,10 @@ get_means = function(df, traits){
     rowMeans(df[,x, drop = FALSE], na.rm = TRUE)
   })
 
-  return(as.data.frame(result))
+  if(any(is.na(result))){warning("NaN's introduced!")}
+  # data.frame apparently has an edge case. If converting an array with a single row, data.frame
+  # assume that the individual values are the rows, instead of the columns, this is resolved by t()
+  if (!is.matrix(result)){result = as.data.frame(t(result))}
+
+  return(data.frame(result))
 }

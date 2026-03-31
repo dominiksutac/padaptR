@@ -3,8 +3,9 @@ test_that('Check_typo if all is good',{
 })
 
 test_that('Check_typo warning',{
-  expect_warning(check_typo('"Ranunculus fluitans"'))
-  expect_equal(length(check_typo('Albus paar','Populo tera'), 2))
+  expect_warning(check_typo("Ranunculus fluitans"))
+  expect_equal(length(check_typo(c('Albus paar','Populo tera'), to_return = T)),2)
+  expect_equal(length(check_typo(c('Albus paar','Populo tera'), to_return = F)),0)
 })
 
 test_that('Check_typo_trait verbose',{
