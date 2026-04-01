@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert.R
 \name{convert}
 \alias{convert}
-\title{Covert a standard scientific name to the ones found in PADAPT}
+\title{Convert a standard scientific name to the ones found in PADAPT}
 \usage{
 convert(list)
 }
@@ -10,11 +10,13 @@ convert(list)
 \item{list}{Your list of species}
 }
 \value{
-Characters, a list of the species names
+A list. By calling \verb{$correct}, you can inspect all the correct names, and by calling
+\verb{$errors} you will see all the names which is neither in our database, nor a synonym for one.
 }
 \description{
-A standard scientific name is usually made up from two words. In PADAPT, a species column also
+A standard scientific name is usually made up from two words. In PADAPT, the species column also
 contains the name of researcher who first described it. So this function, \code{convert()} takes
-your list of standard names, applies the \code{check_typo()} function and returns a list of correct
-names which you can use instantly for the query.
+your list of standard names, applies the \code{safe_search()} function to find the your species
+which are also within PADAPT. It also saves all the wrong ones, and by running \code{get_synonyms()}
+it tries to find a synonym from GBIF which might be found in PADAPT also.
 }
