@@ -75,6 +75,21 @@ convert(species)
 ```
 
 ```{r}
+# Here are our species names
+species = c("Achillea collina ", "Adonis vernalis", "Agropyron intermedium", "Agrostis stolonifera", "Agrostis tenuis" )
+
+# Let's convert them!
+converted = convert(species)
+
+# Apparently 3 out the 5 species are found in PADAPT
+converted$correct
+check_typo(converted$correct)
+# While these are neither in PADAPT, nor has a synonym in GBIF
+converted$errors
+check_typo('Agropyron intermedium')
+```
+
+```{r}
 padapt_query(list_of_species = 'Stipa pennata L.', 
              preset = 'leaf_traits', means = T, just_means = T)
 padapt_query(list_of_species = c('Stipa pennata L.', 'Stipa capillata L.'), 

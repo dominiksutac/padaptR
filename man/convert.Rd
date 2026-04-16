@@ -2,21 +2,36 @@
 % Please edit documentation in R/convert.R
 \name{convert}
 \alias{convert}
-\title{Convert a standard scientific name to the ones found in PADAPT}
+\title{Convert a standard scientific name to PADAPT compatible names}
 \usage{
-convert(list)
+convert(list, table = FALSE)
 }
 \arguments{
-\item{list}{Your list of species}
+\item{list}{A character vector of species names.}
+
+\item{table}{A boolean operator which defines what the function returns, \code{FALSE} by default.}
 }
 \value{
-A list. By calling \verb{$correct}, you can inspect all the correct names, and by calling
-\verb{$errors} you will see all the names which is neither in our database, nor a synonym for one.
+A named list with the following elements:
+\describe{
+\item{correct}{A character vector of species names successfully matched to
+PADAPT, including author citations.}
+\item{errors}{A character vector of input names for which neither the original
+name nor any GBIF-derived synonym could be matched to the PADAPT database.}
+\item{df}{A dataframe in which you may inspect what your inputs have been converted into. The
+function only returns df if you specify \code{table = TRUE}}
+}
 }
 \description{
-A standard scientific name is usually made up from two words. In PADAPT, the species column also
-contains the name of researcher who first described it. So this function, \code{convert()} takes
-your list of standard names, applies the \code{safe_search()} function to find the your species
-which are also within PADAPT. It also saves all the wrong ones, and by running \code{get_synonyms()}
-it tries to find a synonym from GBIF which might be found in PADAPT also.
+Scientific names are typically made up from two parts. In PADAPT however, the species column also
+contains the name of researcher who first described it. The \code{convert()} function takes
+a vector of species names and tries to match them to the corresponding names used in PADAPT.
+
+First, it applies the \code{\link[=safe_search]{safe_search()}} to identify names that already match entries in PADAPT. For
+names that are not found it attempts to retrieve accepted synonyms for GBIF using \code{\link[=get_synonyms_backbone]{get_synonyms_backbone()}}
+and \code{\link[=get_synonyms_lookup]{get_synonyms_lookup()}}. These candidates then are checked again against PADAPT to find valid
+mathces.
+}
+\seealso{
+\code{\link[=safe_search]{safe_search()}}, \code{\link[=get_synonyms_backbone]{get_synonyms_backbone()}}, \code{\link[=get_synonyms_lookup]{get_synonyms_lookup()}}
 }

@@ -13,7 +13,8 @@
 #' @export
 search_species = function(name){
   if (!is.character(name)){stop('Names must be characters')}
-  idx = which(!is.na(stringr::str_extract(padapt$species, pattern = name)))
+  idx = which(!is.na(stringr::str_extract(padapt$species,
+                                          pattern = stringr::fixed(name))))
 
   if (length(idx) == 0){stop('There is no data found!')}
   return(padapt$species[idx])

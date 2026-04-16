@@ -49,9 +49,9 @@ In the following I am gonna demonstrate how all of these works currently
 
 ``` r
 rand_species(2)
-#> [1] "Phleum bertolonii DC."     "Scutellaria columnae All."
+#> [1] "Holcus lanatus L."               "Polystichum lonchitis (L.) Roth"
 rand_traits(2)
-#> [1] "TSM3"     "Flow_dur"
+#> [1] "Borhidi_S" "Flow_dur"
 ```
 
 ``` r
@@ -86,9 +86,36 @@ check_typo(sp2)
 species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis")
 
 convert(species)
-#> [1] "Achillea nobilis L."              "Adonis vernalis L."              
-#> [3] "Agropyron cristatum (L.) Gaertn." "Agrostis stolonifera agg."       
-#> [5] "Agrostis canina L."
+#> $correct
+#> [1] "Achillea collina Becker ex Rchb." "Adonis vernalis L."              
+#> [3] "Agrostis capillaris L."           "Agrostis stolonifera agg."       
+#> [5] "Elymus hispidus (Opiz) Melderis" 
+#> 
+#> $errors
+#> NULL
+```
+
+``` r
+# Here are our species names
+species = c("Achillea collina ", "Adonis vernalis", "Agropyron intermedium", "Agrostis stolonifera", "Agrostis tenuis" )
+
+# Let's convert them!
+converted = convert(species)
+
+# Apparently 3 out the 5 species are found in PADAPT
+converted$correct
+#> [1] "Achillea collina Becker ex Rchb." "Adonis vernalis L."              
+#> [3] "Agrostis capillaris L."           "Agrostis stolonifera agg."       
+#> [5] "Elymus hispidus (Opiz) Melderis"
+check_typo(converted$correct)
+#> All good! Ready for the next step!
+# While these are neither in PADAPT, nor has a synonym in GBIF
+converted$errors
+#> NULL
+check_typo('Agropyron intermedium')
+#> Warning in check_typo("Agropyron intermedium"): 
+#> You've made a typo! Here are some suggestions you may wanted!
+#>  Agropyron intermedium → Corydalis intermedia Link, Agropyron cristatum (L.) Gaertn., Forsythia × intermedia Zabel
 ```
 
 ``` r
