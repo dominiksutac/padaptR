@@ -11,9 +11,9 @@ get_suggestions(names)
 }
 \value{
 A data frame, built from the ID-s of the recommended species.
-With there ID-s we can extract the name of the correct species names.
+With the ID-s we can extract the name of the correct species names.
 }
 \description{
-It uses the \code{stringdist::stringsim()} function for computing similarity scores. By ordering
+It uses the \code{\link[stringdist:stringsim]{stringdist::stringsim()}} function for computing similarity scores. By ordering
 these scores we select three options with the highest scores for each of the species
 }

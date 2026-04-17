@@ -17,3 +17,4 @@ test_that('Check_typo_trait working',{
   expect_warning(check_typo_trait('SLA'))
   expect_false(check_typo_trait('SLA'))
 })
+

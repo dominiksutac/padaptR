@@ -1,11 +1,11 @@
 #' Check if you've made a typo in your list of species names
 #'
-#' @param species A list of character, the species names
+#' @param species A vector of characters
 #' @param to_return TRUE in case you want the function to return the array of recommendation
 #' @param suppress_warning Logical, if `TRUE` the function will not pop up it's warning message
 #' @return If everything is correct, you'll get a message which means you can go ahead to next step.
-#' In case of having something wrong, a warning pops up. In the warning there will be highlighted
-#' all the names which was miss typed, and there will be 3 recommendation for each and every one
+#' In case of having something wrong, a warning pops up. In the warning message, all the misstyped
+#' names will be highlighted, and there will be 3 recommendation for each and every one
 #' of the names
 #' @examples
 #' # It looks like this, when there are no mistakes
@@ -51,8 +51,8 @@ check_typo = function(species, to_return = FALSE, suppress_warning = FALSE){
 
 #' Spell checks the traits
 #'
-#' @param traits A list of character, the trait names
-#' @param verbose If TRUE you'll get any message when run. It is set to FALSE when is called by
+#' @param traits A vector of characters
+#' @param verbose If `TRUE` you'll get messages when run. It is set to `FALSE` when is called by
 #' another function
 #'
 #' @returns `TRUE` or `FALSE`

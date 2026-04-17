@@ -7,9 +7,9 @@
 get_means(df, traits)
 }
 \arguments{
-\item{df}{Data already selected from the database, look up \code{padapt_query()} to understand more}
+\item{df}{Data already selected from the database, look up \code{\link[=padapt_query]{padapt_query()}} to understand more}
 
-\item{traits}{The list of traits requested by the used in \code{padapt_query()}}
+\item{traits}{The list of traits requested by the used in \code{\link[=padapt_query]{padapt_query()}}}
 }
 \value{
 A data frame which contains only the means of the specific traits
@@ -17,6 +17,9 @@ A data frame which contains only the means of the specific traits
 \description{
 In this dataset all those traits which are collected from multiple sources are marked with
 a number, such as SLA1, SLA2, SLA3.... . This makes it easy to distinguish all the traits
-for which we need to calculate the mean value. This is achieved by \code{grep()}, and to collapse
-the names \code{gsub()} is the chosen tool. The mean itself is calculated by \code{rowMeans()}.
+for which we need to calculate the mean value. This is achieved by \code{\link[=grep]{grep()}}, and to collapse
+the names \code{\link[=gsub]{gsub()}} is the chosen tool. The mean itself is calculated by \code{\link[=rowMeans]{rowMeans()}}.
+}
+\seealso{
+\code{\link[=padapt_query]{padapt_query()}}
 }

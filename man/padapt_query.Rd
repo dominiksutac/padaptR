@@ -34,7 +34,7 @@ might need for your analysis.
 }
 \examples{
 
-#First, we deifne a list of species, and a list of traits
+#First, we define a list of species, and a list of traits
 species = c("Acorus calamus L.", "Ambrosia artemisiifolia L." )
 traits = c("sla1","sla2","sla3","sla4")
 padapt_query(species, traits)

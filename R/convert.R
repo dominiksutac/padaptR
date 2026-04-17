@@ -24,7 +24,6 @@
 #' @seealso [safe_search()], [get_synonyms_backbone()], [get_synonyms_lookup()]
 #' @export
 convert = function(list, table = FALSE){
-  # list = b_dat$Species
   list = stringr::str_trim(list)
   result = safe_search(list)
 
@@ -56,11 +55,6 @@ convert = function(list, table = FALSE){
   # names for which we haven't found a synonym that would match with PADAPT
   error_final = c(syn_table_lookup$errors,syn_table_lookup$wrong_input)
 
-  # Combine all the dataframes into one which will be returned, discard the duplicated values
-  res_df = rbind(result$df, backbone_result$df, lookup_result$df) %>%
-    dplyr::distinct(correct, .keep_all = TRUE) %>%
-    dplyr::arrange(input)
-
   # if(length(correct_unique) != length(correct_final)){
   #   idx = which(table(correct_final) >= 2)
   #   warning(paste0('There were duplicates in your list, these have been removed. These are: ',
@@ -73,6 +67,11 @@ convert = function(list, table = FALSE){
   manual lookup, you can access the problematic names by "$errors"'))}
 
   if(table){
+    # Combine all the dataframes into one which will be returned, discard the duplicated values
+    res_df = rbind(result$df, backbone_result$df, syn_table_lookup$df) %>%
+      dplyr::distinct(correct, .keep_all = TRUE) %>%
+      dplyr::arrange(input)
+
     return(list(df = res_df,
                 correct = res_df$correct,
                 errors = sort(error_final)))
@@ -164,9 +163,10 @@ get_synonyms_lookup = function(x){
   errors = c()
   correct_input = c()
   wrong_input = c()
+  df = data.frame(input = character(), correct = character())
 
   for (i in x){
-    # Get the syonyms from GBIF
+    # Get the synonyms from GBIF
     rgbif_search = suppressWarnings(rgbif::name_lookup(i , limit = 10, status = 'SYNONYM')$data)
 
     # If there are no synonyms, mark the species as an error
@@ -187,10 +187,14 @@ get_synonyms_lookup = function(x){
 
       # If in PADAPT, save the name of the species, which we searched a synonym for
       if (length(safe_search(candidates)$df$correct) > 0){
+        pr = data.frame(input = i, correct = safe_search(candidates)$df$correct)
+        df = rbind(df, pr)
+
         correct_input = c(correct_input, i)
       } else {wrong_input = c(wrong_input,i)}
     }
   }
   return(list(syn = syn_found, errors = errors,
-              correct_input = correct_input, wrong_input = wrong_input))
+              correct_input = correct_input, wrong_input = wrong_input, df = df))
 }
+

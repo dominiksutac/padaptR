@@ -7,9 +7,9 @@
 check_typo_trait(traits, verbose = TRUE)
 }
 \arguments{
-\item{traits}{A list of character, the trait names}
+\item{traits}{A vector of characters}
 
-\item{verbose}{If TRUE you'll get any message when run. It is set to FALSE when is called by
+\item{verbose}{If \code{TRUE} you'll get messages when run. It is set to \code{FALSE} when is called by
 another function}
 }
 \value{

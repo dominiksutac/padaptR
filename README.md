@@ -7,9 +7,9 @@
 
 <!-- badges: end -->
 
-The reason for writing padaptR is to realize a tool which makes it
-easier to work with data downloaded from PADAPT (Pannonian Database Of
-Plant Traits). They also have a website: <https://padapt.eu/en>
+padaptR is a tool which makes it easier to work with data downloaded
+from PADAPT (Pannonian Database Of Plant Traits). They also have a
+website: <https://padapt.eu/en>
 
 The original authors of this database are Sonkoly et. al., their
 manuscript is available at <https://doi.org/10.1038/s41597-023-02619-9>
@@ -25,8 +25,8 @@ search string
 of error  
 `rand_species() / rand_traits()` Get traits, and species names
 randomly  
-`convert()` Covert standard scientific names into the ones found in
-PADAPT
+`convert()` Convert standard scientific names into the ones found in
+PADAPT, also searches for synonyms from GBIF
 
 ## Installation
 
@@ -48,14 +48,15 @@ library(padaptR)
 In the following I am gonna demonstrate how all of these works currently
 
 ``` r
+set.seed(42)
 rand_species(2)
-#> [1] "Holcus lanatus L."               "Polystichum lonchitis (L.) Roth"
+#> [1] "Vaccinium myrtillus L."         "Silene otites (L.) Wibel s. l."
 rand_traits(2)
-#> [1] "Borhidi_S" "Flow_dur"
+#> [1] "disp_strat" "LFM1"
 ```
 
 ``` r
-#We know there are a few Stipa species but we don't how to spell them exactly
+#We know there are a few Stipa species but let's inspect them
 search_species('Stipa')
 #> [1] "Stipa borysthenica Klokov ex Prokudin"       
 #> [2] "Stipa bromoides (L.) Dörfler"                
@@ -68,7 +69,6 @@ search_species('Stipa')
 ```
 
 ``` r
-
 # Let's have Stipa pennata L.
 sp = 'Stipa pennata L.'
 check_typo(sp)
@@ -83,46 +83,52 @@ check_typo(sp2)
 ```
 
 ``` r
-species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis")
+species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis","Koeleria gracilis" )
 
-convert(species)
+# We can specify the output, by default we'll only get the names we managed to match, and the ones
+# we did not found a match for
+convert(species) 
+#> Warning in convert(species): In 1 cases neither the name of the species nor
+#>   a synonym was found which would match with the PADAPT database. I recommend
+#>   manual lookup, you can access the problematic names by "$errors"
 #> $correct
 #> [1] "Achillea collina Becker ex Rchb." "Adonis vernalis L."              
 #> [3] "Agrostis capillaris L."           "Agrostis stolonifera agg."       
 #> [5] "Elymus hispidus (Opiz) Melderis" 
 #> 
 #> $errors
-#> NULL
-```
+#> [1] "Koeleria gracilis"
 
-``` r
-# Here are our species names
-species = c("Achillea collina ", "Adonis vernalis", "Agropyron intermedium", "Agrostis stolonifera", "Agrostis tenuis" )
+# We also have an option to inspect what our input has been matched to
 
-# Let's convert them!
-converted = convert(species)
-
-# Apparently 3 out the 5 species are found in PADAPT
-converted$correct
+convert(species, table = T)
+#> Warning in convert(species, table = T): In 1 cases neither the name of the species nor
+#>   a synonym was found which would match with the PADAPT database. I recommend
+#>   manual lookup, you can access the problematic names by "$errors"
+#> $df
+#>                   input                          correct
+#> 1      Achillea collina Achillea collina Becker ex Rchb.
+#> 2       Adonis vernalis               Adonis vernalis L.
+#> 3 Agropyron intermedium  Elymus hispidus (Opiz) Melderis
+#> 4  Agrostis stolonifera        Agrostis stolonifera agg.
+#> 5       Agrostis tenuis           Agrostis capillaris L.
+#> 
+#> $correct
 #> [1] "Achillea collina Becker ex Rchb." "Adonis vernalis L."              
-#> [3] "Agrostis capillaris L."           "Agrostis stolonifera agg."       
-#> [5] "Elymus hispidus (Opiz) Melderis"
-check_typo(converted$correct)
-#> All good! Ready for the next step!
-# While these are neither in PADAPT, nor has a synonym in GBIF
-converted$errors
-#> NULL
-check_typo('Agropyron intermedium')
-#> Warning in check_typo("Agropyron intermedium"): 
-#> You've made a typo! Here are some suggestions you may wanted!
-#>  Agropyron intermedium → Corydalis intermedia Link, Agropyron cristatum (L.) Gaertn., Forsythia × intermedia Zabel
+#> [3] "Elymus hispidus (Opiz) Melderis"  "Agrostis stolonifera agg."       
+#> [5] "Agrostis capillaris L."          
+#> 
+#> $errors
+#> [1] "Koeleria gracilis"
 ```
 
 ``` r
 padapt_query(list_of_species = 'Stipa pennata L.', 
-             preset = 'leaf_traits', means = T, just_means = T)
-#>            species      LA   LDM   LDMC   LFM    SLA
-#> 1 Stipa pennata L. 709.492 30.56 508.92 0.056 8.3745
+             preset = 'leaf_traits', means = T, just_means = F)
+#>            species LA1    LA2      LA3 LA4 LDMC1   LDMC2   LDMC3 LDMC4 SLA1
+#> 1 Stipa pennata L.  NA 177.62 1241.364  NA    NA 531.322 486.518    NA   NA
+#>    SLA2   SLA3 SLA4  LFM1 LFM2  LDM1 LDM2      LA   LDM   LDMC   LFM    SLA
+#> 1 5.984 10.765   NA 0.056   NA 30.56   NA 709.492 30.56 508.92 0.056 8.3745
 padapt_query(list_of_species = c('Stipa pennata L.', 'Stipa capillata L.'), 
              preset = 'leaf_traits', means = T, just_means = T)
 #>              species       LA   LDM     LDMC   LFM     SLA

@@ -17,5 +17,5 @@ rand_species = function(n){
 #' rand_species(10)
 #' @export
 rand_traits = function(n){
-  return(sample(colnames(padapt)[-1], n, replace = F))
+  return(sample(colnames(padapt)[c(-1,-2)], n, replace = F))
 }

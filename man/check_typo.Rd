@@ -7,7 +7,7 @@
 check_typo(species, to_return = FALSE, suppress_warning = FALSE)
 }
 \arguments{
-\item{species}{A list of character, the species names}
+\item{species}{A vector of characters}
 
 \item{to_return}{TRUE in case you want the function to return the array of recommendation}
 
@@ -15,8 +15,8 @@ check_typo(species, to_return = FALSE, suppress_warning = FALSE)
 }
 \value{
 If everything is correct, you'll get a message which means you can go ahead to next step.
-In case of having something wrong, a warning pops up. In the warning there will be highlighted
-all the names which was miss typed, and there will be 3 recommendation for each and every one
+In case of having something wrong, a warning pops up. In the warning message, all the misstyped
+names will be highlighted, and there will be 3 recommendation for each and every one
 of the names
 }
 \description{
