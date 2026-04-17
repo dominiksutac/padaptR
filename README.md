@@ -30,9 +30,10 @@ PADAPT, also searches for synonyms from GBIF
 
 ## Bug reports:
 
-If you ever came across a bug, either:  
-\* open an issue on github  
-\* contact me on this e-mail address: <sutacdominik@gmail.com>
+If you ever came across a bug, either:
+
+- open an issue on github  
+- contact me on this e-mail address: <sutacdominik@gmail.com>
 
 ## Installation
 
