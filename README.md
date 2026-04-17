@@ -28,6 +28,12 @@ randomly
 `convert()` Convert standard scientific names into the ones found in
 PADAPT, also searches for synonyms from GBIF
 
+## Bug reports:
+
+If you ever came across a bug, either:  
+\* open an issue on github  
+\* contact me on this e-mail address: <sutacdominik@gmail.com>
+
 ## Installation
 
 You can install the development version of padaptR from
@@ -40,7 +46,7 @@ devtools::install_github("dominiksutac/padaptR")
 
 ``` r
 library(padaptR)
-#> padaptR 0.0.0.9000 loaded
+#> padaptR 1.0.0.0 loaded
 ```
 
 ## Examples
