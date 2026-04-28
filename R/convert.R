@@ -1,15 +1,16 @@
-#' Convert a standard scientific name to PADAPT compatible names
+#' Convert a standard scientific name to PADAPT-compatible names
 #'
 #' @param list A character vector of species names.
-#' @param table A boolean operator which defines what the function returns, `FALSE` by default.
+#' @param table Logical; if `TRUE`, the function also returns a data frame showing the conversion results.
+#' Default is `FALSE`.
 #' @description
-#' Scientific names are typically made up from two parts. In PADAPT however, the species column also
-#' contains the name of researcher who first described it. The `convert()` function takes
-#' a vector of species names and tries to match them to the corresponding names used in PADAPT.
+#' Scientific names are typically composed of two parts. In PADAPT however, the species column also
+#' includes the name of the researcher who first described the species. The `convert()` function takes
+#' a vector of species names and attempts to match them to the corresponding names used in PADAPT.
 #'
-#' First, it applies the [safe_search()] to identify names that already match entries in PADAPT. For
-#' names that are not found it attempts to retrieve accepted synonyms for GBIF using [get_synonyms_backbone()]
-#' and [get_synonyms_lookup()]. These candidates then are checked again against PADAPT to find valid
+#' First, it applies [safe_search()] to identify names that already match entries in PADAPT. For
+#' names that are not found, it attempts to retrieve accepted synonyms for GBIF using [get_synonyms_backbone()]
+#' and [get_synonyms_lookup()]. These candidates are then checked again against PADAPT to find valid
 #' mathces.
 #' @returns A named list with the following elements:
 #' \describe{
@@ -17,8 +18,8 @@
 #'   PADAPT, including author citations.}
 #'   \item{errors}{A character vector of input names for which neither the original
 #'   name nor any GBIF-derived synonym could be matched to the PADAPT database.}
-#'   \item{df}{A dataframe in which you may inspect what your inputs have been converted into. The
-#'   function only returns df if you specify `table = TRUE`}
+#'   \item{df}{A data frame showing you how the inputs were converted. This is returned only
+#'   if you specify `table = TRUE`}
 #' }
 #'
 #' @seealso [safe_search()], [get_synonyms_backbone()], [get_synonyms_lookup()]
@@ -62,8 +63,8 @@ convert = function(list, table = FALSE){
   # }
 
   if (length(error_final) > 0){
-  warning(paste('In',length(error_final),'cases neither the name of the species nor
-  a synonym was found which would match with the PADAPT database. I recommend
+  warning(paste('In',length(error_final),'case(s) neither the name of the species nor
+  any synonym was found which would match with the PADAPT database. I recommend
   manual lookup, you can access the problematic names by "$errors"'))}
 
   if(table){

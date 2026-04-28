@@ -1,8 +1,8 @@
 #' Tool for searching species names
 #'
-#' @param name The name of the species or a subset of character which are in the name
+#' @param name A species name of a character string contained within the species name.
 #'
-#' @returns An array of names which contains the search characters of word.
+#' @returns A character vector of species names containing the search string.
 #'
 #' @examples
 #' search_species('Stipa')

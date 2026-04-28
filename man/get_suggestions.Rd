@@ -2,12 +2,12 @@
 % Please edit documentation in R/helpers.R
 \name{get_suggestions}
 \alias{get_suggestions}
-\title{Gives suggestions based on the misstyped species names}
+\title{Gives suggestions based on the misspelled species names}
 \usage{
 get_suggestions(names)
 }
 \arguments{
-\item{names}{An array with the misstyped names}
+\item{names}{An array with the misspelled names}
 }
 \value{
 A data frame, built from the ID-s of the recommended species.

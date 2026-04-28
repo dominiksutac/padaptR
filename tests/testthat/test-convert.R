@@ -15,3 +15,8 @@ test_that('Df',{
 test_that("Error warning",{
   expect_warning(convert(c('Centaurea phrygia','Lathyrus inconspicuus')))
 })
+
+test_that('Returns correct synonyms',{
+  expect_equal(convert('Viola foudras')$correct, 'Viola hirta L.')
+  expect_equal(convert('Briza anceps')$correct, 'Briza media L.')
+})

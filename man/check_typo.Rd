@@ -2,25 +2,24 @@
 % Please edit documentation in R/check_typo.R
 \name{check_typo}
 \alias{check_typo}
-\title{Check if you've made a typo in your list of species names}
+\title{Check for typo in your list of species names}
 \usage{
 check_typo(species, to_return = FALSE, suppress_warning = FALSE)
 }
 \arguments{
-\item{species}{A vector of characters}
+\item{species}{A character vector}
 
-\item{to_return}{TRUE in case you want the function to return the array of recommendation}
+\item{to_return}{If TRUE the function to return the array of suggestions}
 
-\item{suppress_warning}{Logical, if \code{TRUE} the function will not pop up it's warning message}
+\item{suppress_warning}{Logical, if \code{TRUE} the function will not display a warning message}
 }
 \value{
-If everything is correct, you'll get a message which means you can go ahead to next step.
-In case of having something wrong, a warning pops up. In the warning message, all the misstyped
-names will be highlighted, and there will be 3 recommendation for each and every one
-of the names
+If all names are correct, the function returns a message indicating that you can procced to the next step
+In any misspelled names are found, a warning is displayed. The warning message, highlights all
+names and provides three suggestions for each one.
 }
 \description{
-Check if you've made a typo in your list of species names
+Check for typo in your list of species names
 }
 \examples{
 # It looks like this, when there are no mistakes

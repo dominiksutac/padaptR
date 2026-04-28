@@ -13,17 +13,17 @@ padapt_query(
 )
 }
 \arguments{
-\item{list_of_species}{A list which contains the names of the species}
+\item{list_of_species}{A character vector containing species names.}
 
-\item{list_of_traits}{A list which contains the names of the traits}
+\item{list_of_traits}{A character vector containing trait names.}
 
-\item{means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} the mean will be calculated for
-traits with multiple sources, for example the leaf traits. There is 5 options to choose from:
-\verb{'all','none','hab_str','repr','kary','dist_cons','ecol_ind','leaf_traits'}. The traits has
-been categorized by this table: \url{https://padapt.eu/info.html}}
+\item{means}{Logical, \code{FALSE} by default. If \code{TRUE} mean values will be calculated for
+traits with multiple sources, for example the leaf traits. There is 5 presets to choose from:
+\verb{'all','none','hab_str','repr','kary','dist_cons','ecol_ind','leaf_traits'}. The trait groups
+been categorized accoridng to this table: \url{https://padapt.eu/info.html}}
 
-\item{just_means}{Boolean operator. \code{FALSE} by default, if \code{TRUE} only the mean trait values
-will be included in the results in case of a trait having multiple sources}
+\item{just_means}{Logical, \code{FALSE} by default. If \code{TRUE} only the mean trait values
+will be included in the results for traits with multiple sources.}
 }
 \value{
 The subset of the database you are interested in.

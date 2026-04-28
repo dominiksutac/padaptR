@@ -1,6 +1,6 @@
-#' Gives suggestions based on the misstyped species names
+#' Gives suggestions based on the misspelled species names
 #'
-#' @param names An array with the misstyped names
+#' @param names An array with the misspelled names
 #'
 #' @returns A data frame, built from the ID-s of the recommended species.
 #' With the ID-s we can extract the name of the correct species names.

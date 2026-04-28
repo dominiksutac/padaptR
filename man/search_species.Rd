@@ -7,10 +7,10 @@
 search_species(name)
 }
 \arguments{
-\item{name}{The name of the species or a subset of character which are in the name}
+\item{name}{A species name of a character string contained within the species name.}
 }
 \value{
-An array of names which contains the search characters of word.
+A character vector of species names containing the search string.
 }
 \description{
 Tool for searching species names

@@ -1,13 +1,13 @@
 #' Search the database
 #'
-#' @param list_of_species A list which contains the names of the species
-#' @param list_of_traits A list which contains the names of the traits
-#' @param means Boolean operator. `FALSE` by default, if `TRUE` the mean will be calculated for
-#' traits with multiple sources, for example the leaf traits. There is 5 options to choose from:
-#' `'all','none','hab_str','repr','kary','dist_cons','ecol_ind','leaf_traits'`. The traits has
-#' been categorized by this table: <https://padapt.eu/info.html>
-#' @param just_means Boolean operator. `FALSE` by default, if `TRUE` only the mean trait values
-#' will be included in the results in case of a trait having multiple sources
+#' @param list_of_species A character vector containing species names.
+#' @param list_of_traits  A character vector containing trait names.
+#' @param means Logical, `FALSE` by default. If `TRUE` mean values will be calculated for
+#' traits with multiple sources, for example the leaf traits. There is 5 presets to choose from:
+#' `'all','none','hab_str','repr','kary','dist_cons','ecol_ind','leaf_traits'`. The trait groups
+#' been categorized accoridng to this table: <https://padapt.eu/info.html>
+#' @param just_means Logical, `FALSE` by default. If `TRUE` only the mean trait values
+#' will be included in the results for traits with multiple sources.
 #'
 #' @returns The subset of the database you are interested in.
 #' @description

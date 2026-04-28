@@ -16,28 +16,28 @@ manuscript is available at <https://doi.org/10.1038/s41597-023-02619-9>
 
 ## Overview
 
-So far these are the available functions within this package:  
-`padapt_query()` Searches the database and applies the filters you
-need  
-`search_species()` Returns all the species names which contains the
-search string  
-`check_typo()` Validate the species names, get recommendations in case
-of error  
-`rand_species() / rand_traits()` Get traits, and species names
-randomly  
-`convert()` Convert standard scientific names into the ones found in
-PADAPT, also searches for synonyms from GBIF
+So far these are the available functions in this package:  
+`padapt_query()` Searches the database and applies the required
+filters.  
+`search_species()` Returns all species names that contains the search
+string.  
+`check_typo()` Validate the species names and provides suggestions in
+case of errors.  
+`rand_species() / rand_traits()` Returns traits, and species names
+randomly.  
+`convert()` Convert standard scientific names into the corresponding
+names found in PADAPT, also searches for synonyms from GBIF.
 
 ## Bug reports:
 
-If you ever came across a bug, either:
+If you encounter a bug, you can either:
 
-- open an issue on github  
-- contact me on this e-mail address: <sutacdominik@gmail.com>
+- open an issue on GitHub  
+- contact me at this e-mail address: <sutacdominik@gmail.com>
 
 ## Installation
 
-You can install the development version of padaptR from
+You can install padaptR from
 [GitHub](https://github.com/dominiksutac/padaptR) with:
 
 ``` r
@@ -63,7 +63,7 @@ rand_traits(2)
 ```
 
 ``` r
-#We know there are a few Stipa species but let's inspect them
+#We know there are a few Stipa species
 search_species('Stipa')
 #> [1] "Stipa borysthenica Klokov ex Prokudin"       
 #> [2] "Stipa bromoides (L.) Dörfler"                
@@ -92,8 +92,8 @@ check_typo(sp2)
 ``` r
 species = c("Achillea collina ","Adonis vernalis","Agropyoron intermedium","Agrostis stolonifera","Agrostis tenuis","Koeleria gracilis" )
 
-# We can specify the output, by default we'll only get the names we managed to match, and the ones
-# we did not found a match for
+# We can specify the output. By default, the function returns only the names that were successfully matched
+# and the ones for which no match was found.
 convert(species) 
 #> Warning in convert(species): In 1 cases neither the name of the species nor
 #>   a synonym was found which would match with the PADAPT database. I recommend
@@ -106,7 +106,7 @@ convert(species)
 #> $errors
 #> [1] "Koeleria gracilis"
 
-# We also have an option to inspect what our input has been matched to
+# We also have the option to inspect how the input names were matched.
 
 convert(species, table = T)
 #> Warning in convert(species, table = T): In 1 cases neither the name of the species nor
